@@ -1,0 +1,37 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity top_tb is end top_tp;
+
+architecture testbench of top_tb is
+    component top is 
+        port(clk_in : in std_logic;
+            scl : out std_logic;
+            sda : inout std_logic;
+            send : in std_logic;
+            busy : out std_logic;
+            address : in std_logic_vector(7 downto 0));
+    end component;
+
+    signal clk_in : std_logic;
+    signal scl : std_logic;
+    signal sda : std_logic;
+    signal send : std_logic;
+    signal busy : std_logic;
+    signal address : std_logic_vector(7 downto 0);
+begin
+
+    process
+    begin
+        
+        for i in 0 to 100 loop
+            clk_in <= '0';
+            wait for 10 ps;
+            clk_in <= '1';
+            wait for 10 ps;
+        end loop;
+
+        wait;
+
+    end process;
+end architecture;

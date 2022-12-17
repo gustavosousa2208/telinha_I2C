@@ -1,0 +1,966 @@
+//
+//Written by GowinSynthesis
+//Product Version "GowinSynthesis V1.9.8.07"
+//Sat Dec 17 20:03:19 2022
+
+//Source file index table:
+//file0 "\C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/top.vhd"
+`timescale 100 ps/100 ps
+module top (
+  clk_in,
+  scl,
+  sda,
+  start_transmission,
+  send_data,
+  busy,
+  address,
+  i_data,
+  o_nack1,
+  o_nack2
+)
+;
+input clk_in;
+output scl;
+inout sda;
+input start_transmission;
+input send_data;
+output busy;
+input [7:0] address;
+input [7:0] i_data;
+output o_nack1;
+output o_nack2;
+wire clk_in_d;
+wire start_transmission_d;
+wire send_data_d;
+wire sda_in;
+wire n42_10;
+wire n42_11;
+wire n42_12;
+wire n42_13;
+wire n115_10;
+wire n115_11;
+wire n115_12;
+wire n115_13;
+wire n415_4;
+wire n191_3;
+wire n291_3;
+wire busy_d;
+wire sda_7;
+wire n193_9;
+wire n186_15;
+wire conta_dado_2_11;
+wire n168_12;
+wire n174_11;
+wire n179_12;
+wire n183_13;
+wire n197_18;
+wire n186_17;
+wire n164_14;
+wire n166_13;
+wire n172_13;
+wire n203_14;
+wire n176_14;
+wire n181_14;
+wire n321_5;
+wire n39_10;
+wire n38_10;
+wire n112_10;
+wire n111_10;
+wire conta_3_13;
+wire n195_18;
+wire conta_dado_2_12;
+wire conta_dado_2_13;
+wire n168_13;
+wire n168_14;
+wire n179_13;
+wire n183_14;
+wire n197_19;
+wire n205_13;
+wire n186_18;
+wire n186_19;
+wire n164_15;
+wire n201_13;
+wire n203_15;
+wire conta_3_14;
+wire n183_15;
+wire n205_15;
+wire n201_15;
+wire n199_20;
+wire conta_1_13;
+wire conta_2_13;
+wire n207_16;
+wire n209_14;
+wire s_full;
+wire GO;
+wire o_nack1_d;
+wire o_nack2_d;
+wire scl_d;
+wire scl_buffer_en;
+wire s_sda;
+wire n42_15;
+wire n42_17;
+wire n115_15;
+wire n115_17;
+wire n42_19;
+wire n115_19;
+wire s_address_7_7;
+wire [7:0] address_d;
+wire [7:0] i_data_d;
+wire [7:0] s_address;
+wire [7:0] s_data;
+wire [9:0] estado;
+wire [3:0] conta;
+wire [3:0] conta_dado;
+wire VCC;
+wire GND;
+  IBUF clk_in_ibuf (
+    .O(clk_in_d),
+    .I(clk_in) 
+);
+  IBUF start_transmission_ibuf (
+    .O(start_transmission_d),
+    .I(start_transmission) 
+);
+  IBUF send_data_ibuf (
+    .O(send_data_d),
+    .I(send_data) 
+);
+  IBUF address_0_ibuf (
+    .O(address_d[0]),
+    .I(address[0]) 
+);
+  IBUF address_1_ibuf (
+    .O(address_d[1]),
+    .I(address[1]) 
+);
+  IBUF address_2_ibuf (
+    .O(address_d[2]),
+    .I(address[2]) 
+);
+  IBUF address_3_ibuf (
+    .O(address_d[3]),
+    .I(address[3]) 
+);
+  IBUF address_4_ibuf (
+    .O(address_d[4]),
+    .I(address[4]) 
+);
+  IBUF address_5_ibuf (
+    .O(address_d[5]),
+    .I(address[5]) 
+);
+  IBUF address_6_ibuf (
+    .O(address_d[6]),
+    .I(address[6]) 
+);
+  IBUF address_7_ibuf (
+    .O(address_d[7]),
+    .I(address[7]) 
+);
+  IBUF i_data_0_ibuf (
+    .O(i_data_d[0]),
+    .I(i_data[0]) 
+);
+  IBUF i_data_1_ibuf (
+    .O(i_data_d[1]),
+    .I(i_data[1]) 
+);
+  IBUF i_data_2_ibuf (
+    .O(i_data_d[2]),
+    .I(i_data[2]) 
+);
+  IBUF i_data_3_ibuf (
+    .O(i_data_d[3]),
+    .I(i_data[3]) 
+);
+  IBUF i_data_4_ibuf (
+    .O(i_data_d[4]),
+    .I(i_data[4]) 
+);
+  IBUF i_data_5_ibuf (
+    .O(i_data_d[5]),
+    .I(i_data[5]) 
+);
+  IBUF i_data_6_ibuf (
+    .O(i_data_d[6]),
+    .I(i_data[6]) 
+);
+  IBUF i_data_7_ibuf (
+    .O(i_data_d[7]),
+    .I(i_data[7]) 
+);
+  IOBUF sda_iobuf (
+    .O(sda_in),
+    .IO(sda),
+    .I(n321_5),
+    .OEN(sda_7) 
+);
+  OBUF scl_obuf (
+    .O(scl),
+    .I(scl_d) 
+);
+  OBUF busy_obuf (
+    .O(busy),
+    .I(busy_d) 
+);
+  OBUF o_nack1_obuf (
+    .O(o_nack1),
+    .I(o_nack1_d) 
+);
+  OBUF o_nack2_obuf (
+    .O(o_nack2),
+    .I(o_nack2_d) 
+);
+  LUT3 n42_s16 (
+    .F(n42_10),
+    .I0(s_address[1]),
+    .I1(s_address[0]),
+    .I2(conta[0]) 
+);
+defparam n42_s16.INIT=8'hCA;
+  LUT3 n42_s17 (
+    .F(n42_11),
+    .I0(s_address[3]),
+    .I1(s_address[2]),
+    .I2(conta[0]) 
+);
+defparam n42_s17.INIT=8'hCA;
+  LUT3 n42_s18 (
+    .F(n42_12),
+    .I0(s_address[5]),
+    .I1(s_address[4]),
+    .I2(conta[0]) 
+);
+defparam n42_s18.INIT=8'hCA;
+  LUT3 n42_s19 (
+    .F(n42_13),
+    .I0(s_address[7]),
+    .I1(s_address[6]),
+    .I2(conta[0]) 
+);
+defparam n42_s19.INIT=8'hCA;
+  LUT3 n115_s16 (
+    .F(n115_10),
+    .I0(s_data[1]),
+    .I1(s_data[0]),
+    .I2(conta_dado[0]) 
+);
+defparam n115_s16.INIT=8'hCA;
+  LUT3 n115_s17 (
+    .F(n115_11),
+    .I0(s_data[3]),
+    .I1(s_data[2]),
+    .I2(conta_dado[0]) 
+);
+defparam n115_s17.INIT=8'hCA;
+  LUT3 n115_s18 (
+    .F(n115_12),
+    .I0(s_data[5]),
+    .I1(s_data[4]),
+    .I2(conta_dado[0]) 
+);
+defparam n115_s18.INIT=8'hCA;
+  LUT3 n115_s19 (
+    .F(n115_13),
+    .I0(s_data[7]),
+    .I1(s_data[6]),
+    .I2(conta_dado[0]) 
+);
+defparam n115_s19.INIT=8'hCA;
+  LUT2 n415_s0 (
+    .F(n415_4),
+    .I0(estado[4]),
+    .I1(estado[0]) 
+);
+defparam n415_s0.INIT=4'h4;
+  LUT2 n191_s0 (
+    .F(n191_3),
+    .I0(estado[4]),
+    .I1(estado[5]) 
+);
+defparam n191_s0.INIT=4'hE;
+  LUT3 n291_s0 (
+    .F(n291_3),
+    .I0(estado[7]),
+    .I1(clk_in_d),
+    .I2(estado[9]) 
+);
+defparam n291_s0.INIT=8'hF8;
+  LUT2 busy_d_s (
+    .F(busy_d),
+    .I0(estado[4]),
+    .I1(estado[9]) 
+);
+defparam busy_d_s.INIT=4'hE;
+  LUT4 sda_s4 (
+    .F(sda_7),
+    .I0(estado[3]),
+    .I1(estado[1]),
+    .I2(estado[9]),
+    .I3(estado[2]) 
+);
+defparam sda_s4.INIT=16'h000E;
+  LUT4 n193_s5 (
+    .F(n193_9),
+    .I0(estado[4]),
+    .I1(estado[1]),
+    .I2(estado[3]),
+    .I3(estado[5]) 
+);
+defparam n193_s5.INIT=16'hFFFE;
+  LUT4 n186_s11 (
+    .F(n186_15),
+    .I0(n191_3),
+    .I1(estado[1]),
+    .I2(estado[8]),
+    .I3(estado[9]) 
+);
+defparam n186_s11.INIT=16'hFFFE;
+  LUT4 conta_dado_2_s5 (
+    .F(conta_dado_2_11),
+    .I0(estado[0]),
+    .I1(conta_dado_2_12),
+    .I2(conta_dado_2_13),
+    .I3(estado[4]) 
+);
+defparam conta_dado_2_s5.INIT=16'h0DCC;
+  LUT3 n168_s8 (
+    .F(n168_12),
+    .I0(n168_13),
+    .I1(estado[7]),
+    .I2(n168_14) 
+);
+defparam n168_s8.INIT=8'h4F;
+  LUT3 n174_s7 (
+    .F(n174_11),
+    .I0(n168_13),
+    .I1(estado[4]),
+    .I2(conta_dado_2_12) 
+);
+defparam n174_s7.INIT=8'hF4;
+  LUT3 n179_s8 (
+    .F(n179_12),
+    .I0(n168_13),
+    .I1(estado[2]),
+    .I2(n179_13) 
+);
+defparam n179_s8.INIT=8'h4F;
+  LUT3 n183_s9 (
+    .F(n183_13),
+    .I0(n168_13),
+    .I1(estado[0]),
+    .I2(n183_14) 
+);
+defparam n183_s9.INIT=8'h4F;
+  LUT3 n197_s12 (
+    .F(n197_18),
+    .I0(n197_19),
+    .I1(n38_10),
+    .I2(estado[5]) 
+);
+defparam n197_s12.INIT=8'h40;
+  LUT3 n186_s12 (
+    .F(n186_17),
+    .I0(n186_18),
+    .I1(n186_19),
+    .I2(estado[9]) 
+);
+defparam n186_s12.INIT=8'hFE;
+  LUT4 n164_s10 (
+    .F(n164_14),
+    .I0(n168_13),
+    .I1(GO),
+    .I2(n164_15),
+    .I3(estado[9]) 
+);
+defparam n164_s10.INIT=16'h77F0;
+  LUT4 n166_s9 (
+    .F(n166_13),
+    .I0(estado[9]),
+    .I1(GO),
+    .I2(n168_13),
+    .I3(estado[8]) 
+);
+defparam n166_s9.INIT=16'h8F88;
+  LUT3 n172_s9 (
+    .F(n172_13),
+    .I0(n168_13),
+    .I1(estado[5]),
+    .I2(estado[8]) 
+);
+defparam n172_s9.INIT=8'hF4;
+  LUT4 n203_s9 (
+    .F(n203_14),
+    .I0(n203_15),
+    .I1(conta_dado[3]),
+    .I2(estado[4]),
+    .I3(conta_dado_2_12) 
+);
+defparam n203_s9.INIT=16'hFF40;
+  LUT4 n176_s9 (
+    .F(n176_14),
+    .I0(n197_19),
+    .I1(n205_13),
+    .I2(estado[3]),
+    .I3(estado[5]) 
+);
+defparam n176_s9.INIT=16'hFAC0;
+  LUT4 n181_s9 (
+    .F(n181_14),
+    .I0(conta_dado_2_13),
+    .I1(n201_13),
+    .I2(estado[1]),
+    .I3(estado[4]) 
+);
+defparam n181_s9.INIT=16'hFAC0;
+  LUT3 n321_s1 (
+    .F(n321_5),
+    .I0(s_sda),
+    .I1(estado[9]),
+    .I2(estado[2]) 
+);
+defparam n321_s1.INIT=8'hFE;
+  LUT2 n39_s4 (
+    .F(n39_10),
+    .I0(conta[0]),
+    .I1(conta[1]) 
+);
+defparam n39_s4.INIT=4'h9;
+  LUT3 n38_s4 (
+    .F(n38_10),
+    .I0(conta[0]),
+    .I1(conta[1]),
+    .I2(conta[2]) 
+);
+defparam n38_s4.INIT=8'hE1;
+  LUT2 n112_s4 (
+    .F(n112_10),
+    .I0(conta_dado[0]),
+    .I1(conta_dado[1]) 
+);
+defparam n112_s4.INIT=4'h9;
+  LUT3 n111_s4 (
+    .F(n111_10),
+    .I0(conta_dado[0]),
+    .I1(conta_dado[1]),
+    .I2(conta_dado[2]) 
+);
+defparam n111_s4.INIT=8'hE1;
+  LUT4 conta_3_s6 (
+    .F(conta_3_13),
+    .I0(conta_3_14),
+    .I1(conta_dado_2_13),
+    .I2(estado[4]),
+    .I3(estado[5]) 
+);
+defparam conta_3_s6.INIT=16'hEFC0;
+  LUT3 n195_s12 (
+    .F(n195_18),
+    .I0(conta_3_14),
+    .I1(estado[5]),
+    .I2(estado[4]) 
+);
+defparam n195_s12.INIT=8'hF8;
+  LUT4 conta_dado_2_s6 (
+    .F(conta_dado_2_12),
+    .I0(o_nack1_d),
+    .I1(s_full),
+    .I2(start_transmission_d),
+    .I3(estado[0]) 
+);
+defparam conta_dado_2_s6.INIT=16'h4000;
+  LUT4 conta_dado_2_s7 (
+    .F(conta_dado_2_13),
+    .I0(conta_dado[0]),
+    .I1(conta_dado[1]),
+    .I2(conta_dado[2]),
+    .I3(conta_dado[3]) 
+);
+defparam conta_dado_2_s7.INIT=16'h0001;
+  LUT4 n168_s9 (
+    .F(n168_13),
+    .I0(n197_19),
+    .I1(estado[5]),
+    .I2(conta_dado_2_13),
+    .I3(estado[4]) 
+);
+defparam n168_s9.INIT=16'hB0BB;
+  LUT4 n168_s10 (
+    .F(n168_14),
+    .I0(estado[0]),
+    .I1(o_nack1_d),
+    .I2(start_transmission_d),
+    .I3(estado[1]) 
+);
+defparam n168_s10.INIT=16'h7077;
+  LUT4 n179_s9 (
+    .F(n179_13),
+    .I0(o_nack1_d),
+    .I1(start_transmission_d),
+    .I2(estado[0]),
+    .I3(estado[7]) 
+);
+defparam n179_s9.INIT=16'h00EF;
+  LUT4 n183_s10 (
+    .F(n183_14),
+    .I0(n183_15),
+    .I1(estado[1]),
+    .I2(start_transmission_d),
+    .I3(estado[3]) 
+);
+defparam n183_s10.INIT=16'h001F;
+  LUT4 n197_s13 (
+    .F(n197_19),
+    .I0(conta[0]),
+    .I1(conta[1]),
+    .I2(conta[2]),
+    .I3(conta[3]) 
+);
+defparam n197_s13.INIT=16'h0001;
+  LUT2 n205_s9 (
+    .F(n205_13),
+    .I0(conta_dado_2_13),
+    .I1(estado[4]) 
+);
+defparam n205_s9.INIT=4'h4;
+  LUT4 n186_s13 (
+    .F(n186_18),
+    .I0(n42_19),
+    .I1(s_sda),
+    .I2(n197_19),
+    .I3(estado[5]) 
+);
+defparam n186_s13.INIT=16'hCA00;
+  LUT4 n186_s14 (
+    .F(n186_19),
+    .I0(n115_19),
+    .I1(s_sda),
+    .I2(conta_dado_2_13),
+    .I3(estado[4]) 
+);
+defparam n186_s14.INIT=16'hCA00;
+  LUT4 n164_s11 (
+    .F(n164_15),
+    .I0(n193_9),
+    .I1(estado[0]),
+    .I2(estado[7]),
+    .I3(estado[8]) 
+);
+defparam n164_s11.INIT=16'h0001;
+  LUT2 n201_s8 (
+    .F(n201_13),
+    .I0(n197_19),
+    .I1(estado[5]) 
+);
+defparam n201_s8.INIT=4'h4;
+  LUT3 n203_s10 (
+    .F(n203_15),
+    .I0(conta_dado[0]),
+    .I1(conta_dado[1]),
+    .I2(conta_dado[2]) 
+);
+defparam n203_s10.INIT=8'h01;
+  LUT4 conta_3_s7 (
+    .F(conta_3_14),
+    .I0(conta[0]),
+    .I1(conta[1]),
+    .I2(conta[2]),
+    .I3(conta[3]) 
+);
+defparam conta_3_s7.INIT=16'hFE01;
+  LUT3 n183_s11 (
+    .F(n183_15),
+    .I0(s_full),
+    .I1(o_nack1_d),
+    .I2(estado[0]) 
+);
+defparam n183_s11.INIT=8'h10;
+  LUT4 n205_s10 (
+    .F(n205_15),
+    .I0(n205_13),
+    .I1(conta_dado[0]),
+    .I2(conta_dado[1]),
+    .I3(conta_dado[2]) 
+);
+defparam n205_s10.INIT=16'hA802;
+  LUT4 n201_s9 (
+    .F(n201_15),
+    .I0(n197_19),
+    .I1(estado[5]),
+    .I2(n205_13),
+    .I3(conta[0]) 
+);
+defparam n201_s9.INIT=16'hF044;
+  LUT4 n199_s13 (
+    .F(n199_20),
+    .I0(n197_19),
+    .I1(conta[0]),
+    .I2(conta[1]),
+    .I3(estado[5]) 
+);
+defparam n199_s13.INIT=16'h4100;
+  LUT4 conta_1_s6 (
+    .F(conta_1_13),
+    .I0(n199_20),
+    .I1(n205_13),
+    .I2(estado[4]),
+    .I3(estado[5]) 
+);
+defparam conta_1_s6.INIT=16'hBBB0;
+  LUT4 conta_2_s6 (
+    .F(conta_2_13),
+    .I0(n197_18),
+    .I1(n205_13),
+    .I2(estado[4]),
+    .I3(estado[5]) 
+);
+defparam conta_2_s6.INIT=16'hBBB0;
+  LUT4 n207_s10 (
+    .F(n207_16),
+    .I0(conta_dado_2_13),
+    .I1(estado[4]),
+    .I2(conta_dado[0]),
+    .I3(conta_dado[1]) 
+);
+defparam n207_s10.INIT=16'h4004;
+  LUT3 n209_s9 (
+    .F(n209_14),
+    .I0(conta_dado[0]),
+    .I1(conta_dado_2_13),
+    .I2(estado[4]) 
+);
+defparam n209_s9.INIT=8'h10;
+  DFFE s_address_7_s0 (
+    .Q(s_address[7]),
+    .D(address_d[7]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7) 
+);
+defparam s_address_7_s0.INIT=1'b0;
+  DFFE s_address_2_s0 (
+    .Q(s_address[2]),
+    .D(address_d[2]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7) 
+);
+defparam s_address_2_s0.INIT=1'b0;
+  DFFE s_address_1_s0 (
+    .Q(s_address[1]),
+    .D(address_d[1]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7) 
+);
+defparam s_address_1_s0.INIT=1'b0;
+  DFFE s_address_0_s0 (
+    .Q(s_address[0]),
+    .D(address_d[0]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7) 
+);
+defparam s_address_0_s0.INIT=1'b0;
+  DFFCE s_full_s0 (
+    .Q(s_full),
+    .D(VCC),
+    .CLK(send_data_d),
+    .CE(estado[0]),
+    .CLEAR(estado[4]) 
+);
+defparam s_full_s0.INIT=1'b0;
+  DFFE s_data_6_s0 (
+    .Q(s_data[6]),
+    .D(i_data_d[6]),
+    .CLK(send_data_d),
+    .CE(n415_4) 
+);
+defparam s_data_6_s0.INIT=1'b0;
+  DFFE s_data_3_s0 (
+    .Q(s_data[3]),
+    .D(i_data_d[3]),
+    .CLK(send_data_d),
+    .CE(n415_4) 
+);
+defparam s_data_3_s0.INIT=1'b0;
+  DFFE s_data_1_s0 (
+    .Q(s_data[1]),
+    .D(i_data_d[1]),
+    .CLK(send_data_d),
+    .CE(n415_4) 
+);
+defparam s_data_1_s0.INIT=1'b0;
+  DFFC GO_s0 (
+    .Q(GO),
+    .D(VCC),
+    .CLK(start_transmission_d),
+    .CLEAR(estado[2]) 
+);
+defparam GO_s0.INIT=1'b0;
+  DLE s_nack1_s0 (
+    .Q(o_nack1_d),
+    .D(sda_in),
+    .G(clk_in_d),
+    .CE(estado[3]) 
+);
+defparam s_nack1_s0.INIT=1'b1;
+  DLE s_nack2_s0 (
+    .Q(o_nack2_d),
+    .D(sda_in),
+    .G(clk_in_d),
+    .CE(estado[1]) 
+);
+defparam s_nack2_s0.INIT=1'b1;
+  DLP scl_s2 (
+    .Q(scl_d),
+    .D(clk_in_d),
+    .G(scl_buffer_en),
+    .PRESET(n291_3) 
+);
+  DFFSE s_data_0_s1 (
+    .Q(s_data[0]),
+    .D(i_data_d[0]),
+    .CLK(send_data_d),
+    .CE(n415_4),
+    .SET(GND) 
+);
+defparam s_data_0_s1.INIT=1'b1;
+  DFFSE s_data_2_s1 (
+    .Q(s_data[2]),
+    .D(i_data_d[2]),
+    .CLK(send_data_d),
+    .CE(n415_4),
+    .SET(GND) 
+);
+defparam s_data_2_s1.INIT=1'b1;
+  DFFSE s_data_4_s1 (
+    .Q(s_data[4]),
+    .D(i_data_d[4]),
+    .CLK(send_data_d),
+    .CE(n415_4),
+    .SET(GND) 
+);
+defparam s_data_4_s1.INIT=1'b1;
+  DFFSE s_data_5_s1 (
+    .Q(s_data[5]),
+    .D(i_data_d[5]),
+    .CLK(send_data_d),
+    .CE(n415_4),
+    .SET(GND) 
+);
+defparam s_data_5_s1.INIT=1'b1;
+  DFFSE s_data_7_s1 (
+    .Q(s_data[7]),
+    .D(i_data_d[7]),
+    .CLK(send_data_d),
+    .CE(n415_4),
+    .SET(GND) 
+);
+defparam s_data_7_s1.INIT=1'b1;
+  DFFSE s_address_3_s2 (
+    .Q(s_address[3]),
+    .D(address_d[3]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7),
+    .SET(GND) 
+);
+defparam s_address_3_s2.INIT=1'b1;
+  DFFSE s_address_4_s2 (
+    .Q(s_address[4]),
+    .D(address_d[4]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7),
+    .SET(GND) 
+);
+defparam s_address_4_s2.INIT=1'b1;
+  DFFSE s_address_5_s2 (
+    .Q(s_address[5]),
+    .D(address_d[5]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7),
+    .SET(GND) 
+);
+defparam s_address_5_s2.INIT=1'b1;
+  DFFSE s_address_6_s2 (
+    .Q(s_address[6]),
+    .D(address_d[6]),
+    .CLK(start_transmission_d),
+    .CE(s_address_7_7),
+    .SET(GND) 
+);
+defparam s_address_6_s2.INIT=1'b1;
+  DFFN estado_8_s4 (
+    .Q(estado[8]),
+    .D(n166_13),
+    .CLK(clk_in_d) 
+);
+defparam estado_8_s4.INIT=1'b0;
+  DFFN estado_7_s1 (
+    .Q(estado[7]),
+    .D(n168_12),
+    .CLK(clk_in_d) 
+);
+defparam estado_7_s1.INIT=1'b0;
+  DFFN estado_5_s4 (
+    .Q(estado[5]),
+    .D(n172_13),
+    .CLK(clk_in_d) 
+);
+defparam estado_5_s4.INIT=1'b0;
+  DFFN estado_4_s2 (
+    .Q(estado[4]),
+    .D(n174_11),
+    .CLK(clk_in_d) 
+);
+defparam estado_4_s2.INIT=1'b0;
+  DFFN estado_3_s2 (
+    .Q(estado[3]),
+    .D(n176_14),
+    .CLK(clk_in_d) 
+);
+defparam estado_3_s2.INIT=1'b0;
+  DFFN estado_2_s2 (
+    .Q(estado[2]),
+    .D(n179_12),
+    .CLK(clk_in_d) 
+);
+defparam estado_2_s2.INIT=1'b0;
+  DFFN estado_1_s2 (
+    .Q(estado[1]),
+    .D(n181_14),
+    .CLK(clk_in_d) 
+);
+defparam estado_1_s2.INIT=1'b0;
+  DFFN estado_0_s2 (
+    .Q(estado[0]),
+    .D(n183_13),
+    .CLK(clk_in_d) 
+);
+defparam estado_0_s2.INIT=1'b0;
+  DFFNS estado_9_s5 (
+    .Q(estado[9]),
+    .D(n164_14),
+    .CLK(clk_in_d),
+    .SET(GND) 
+);
+defparam estado_9_s5.INIT=1'b1;
+  DFFNE scl_buffer_en_s2 (
+    .Q(scl_buffer_en),
+    .D(n191_3),
+    .CLK(clk_in_d),
+    .CE(n193_9) 
+);
+defparam scl_buffer_en_s2.INIT=1'b0;
+  DFFNE conta_2_s4 (
+    .Q(conta[2]),
+    .D(n197_18),
+    .CLK(clk_in_d),
+    .CE(conta_2_13) 
+);
+defparam conta_2_s4.INIT=1'b0;
+  DFFNE conta_1_s4 (
+    .Q(conta[1]),
+    .D(n199_20),
+    .CLK(clk_in_d),
+    .CE(conta_1_13) 
+);
+defparam conta_1_s4.INIT=1'b0;
+  DFFNE conta_0_s3 (
+    .Q(conta[0]),
+    .D(n201_15),
+    .CLK(clk_in_d),
+    .CE(n191_3) 
+);
+defparam conta_0_s3.INIT=1'b0;
+  DFFNE conta_dado_2_s4 (
+    .Q(conta_dado[2]),
+    .D(n205_15),
+    .CLK(clk_in_d),
+    .CE(conta_dado_2_11) 
+);
+defparam conta_dado_2_s4.INIT=1'b0;
+  DFFNE conta_dado_1_s4 (
+    .Q(conta_dado[1]),
+    .D(n207_16),
+    .CLK(clk_in_d),
+    .CE(conta_dado_2_11) 
+);
+defparam conta_dado_1_s4.INIT=1'b0;
+  DFFNE conta_dado_0_s4 (
+    .Q(conta_dado[0]),
+    .D(n209_14),
+    .CLK(clk_in_d),
+    .CE(conta_dado_2_11) 
+);
+defparam conta_dado_0_s4.INIT=1'b0;
+  DFFNSE conta_dado_3_s5 (
+    .Q(conta_dado[3]),
+    .D(n203_14),
+    .CLK(clk_in_d),
+    .SET(GND),
+    .CE(conta_dado_2_11) 
+);
+defparam conta_dado_3_s5.INIT=1'b1;
+  DFFNSE conta_3_s5 (
+    .Q(conta[3]),
+    .D(n195_18),
+    .CLK(clk_in_d),
+    .SET(GND),
+    .CE(conta_3_13) 
+);
+defparam conta_3_s5.INIT=1'b1;
+  DFFNSE s_sda_s4 (
+    .Q(s_sda),
+    .D(n186_17),
+    .CLK(clk_in_d),
+    .SET(GND),
+    .CE(n186_15) 
+);
+defparam s_sda_s4.INIT=1'b1;
+  MUX2_LUT5 n42_s14 (
+    .O(n42_15),
+    .I0(n42_10),
+    .I1(n42_11),
+    .S0(n39_10) 
+);
+  MUX2_LUT5 n42_s15 (
+    .O(n42_17),
+    .I0(n42_12),
+    .I1(n42_13),
+    .S0(n39_10) 
+);
+  MUX2_LUT5 n115_s14 (
+    .O(n115_15),
+    .I0(n115_10),
+    .I1(n115_11),
+    .S0(n112_10) 
+);
+  MUX2_LUT5 n115_s15 (
+    .O(n115_17),
+    .I0(n115_12),
+    .I1(n115_13),
+    .S0(n112_10) 
+);
+  MUX2_LUT6 n42_s13 (
+    .O(n42_19),
+    .I0(n42_15),
+    .I1(n42_17),
+    .S0(n38_10) 
+);
+  MUX2_LUT6 n115_s13 (
+    .O(n115_19),
+    .I0(n115_15),
+    .I1(n115_17),
+    .S0(n111_10) 
+);
+  INV s_address_7_s3 (
+    .O(s_address_7_7),
+    .I(estado[2]) 
+);
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+  GSR GSR (
+    .GSRI(VCC) 
+);
+endmodule /* top */

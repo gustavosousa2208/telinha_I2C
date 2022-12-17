@@ -1,0 +1,95 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity top is 
+    port(clk_in : in std_logic;
+         scl : out std_logic;
+         sda : inout std_logic;
+         send : in std_logic;
+         busy : out std_logic;
+         address : in std_logic_vector(7 downto 0));
+end entity;
+
+architecture rtl of top is
+    type t_estados is (idle, start, _stop, address, data, ack);
+    signal estado : t_estados := idle;
+
+    signal o_i2c_clk : std_logic := '0';
+    signal i2c_clk_en: std_logic := '0';
+
+    signal s_sda, s_scl : std_logic := '1';
+    signal GO : std_logic := '0';
+
+    signal s_address : std_logic_vector(7 downto 0) := "";
+    signal scl_buffer_en : std_logic := '0';
+
+begin
+
+    divisor : process(clk_in)
+        variable conta : integer := 1;
+    begin
+        if rising_edge(clk_in) then
+            if conta = 100 then
+                conta := 1;
+                i2c_clk_en <= '1';
+                o_i2c_clk <= not o_i2c_clk;
+            else
+                i2c_clk_en <= '0';
+                conta := conta + 1;
+            end if;
+        end if;
+    end process;
+
+    start_reg : process(clk_in, send)
+    begin
+        if estado = termianado then
+            GO <= '0';
+        elsif rising_edge(send) then
+            GO <= '1'
+        else
+            GO < GO;
+        end if;
+    end process;
+
+
+    process(clk_in, sda)
+        variable conta : integer range 8 downto 0 := 8;
+    begin
+        if falling_edge(o_i2c_clk) then
+            case estado is 
+            when idle =>
+                if GO = '1' then
+                    estado <= start;
+                else
+                    estado <= idle;
+                end if;
+                scl_buffer_en <= '1';
+                s_sda <= '1';
+                s_scl <= '1';
+            when start =>
+                s_sda <= '0';
+                s_scl <= '1';
+                estado <= address;
+            when address =>
+                if conta = 0 then
+                    scl_buffer_en <= '0';
+                else
+                    s_sda <= address(conta - 1);
+                    conta := conta - 1;
+                end if;
+            when others =>
+                estado <= idle;
+            end case;
+        end if;
+    end process;
+
+
+    scl <= '1' when estado = idle else 
+            o_i2c_clk when scl_buffer_en = '1';
+
+    sda <= '1' when estado = idle else s_sda;
+
+    busy <= '1' when estado /= idle else '0';
+
+
+end architecture;

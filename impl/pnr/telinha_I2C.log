@@ -1,0 +1,33 @@
+Reading netlist file: "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\gwsynthesis\telinha_I2C.vg"
+Parsing netlist file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\gwsynthesis\telinha_I2C.vg" completed
+Processing netlist completed
+Reading constraint file: "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\telinha_I2C.cst"
+Physical Constraint parsed completed
+Running placement......
+[10%] Placement Phase 0 completed
+[20%] Placement Phase 1 completed
+[30%] Placement Phase 2 completed
+[50%] Placement Phase 3 completed
+Running routing......
+[60%] Routing Phase 0 completed
+[70%] Routing Phase 1 completed
+[80%] Routing Phase 2 completed
+WARN  (PR1014) : Generic routing resource will be used to clock signal 'start_transmission_d' by the specified constraint. And then it may lead to the excessive delay or skew
+[90%] Routing Phase 3 completed
+Running timing analysis......
+[95%] Timing analysis completed
+Placement and routing completed
+Bitstream generation in progress......
+Bitstream generation completed
+Running power analysis......
+[100%] Power analysis completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.power.html" completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.pin.html" completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.rpt.html" completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.rpt.txt" completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.sdf" completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.tr.html" completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.posp" completed
+Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.ibs" completed
+Sat Dec 17 20:03:51 2022
+
