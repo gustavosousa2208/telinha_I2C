@@ -5,14 +5,14 @@ use ieee.numeric_std.all;
 entity controller is 
     Port ( clk : in std_logic;
            reset : in std_logic;
-           i_start : in std_logic;
-           o_scl, saida_pulso_dados, saida_hab_transmissao : out std_logic;
+           start : in std_logic;
+           o_scl : out std_logic;
            o_sda : inout std_logic;
            o_address_nack, o_data_nack, o_busy : out std_logic);
 end controller;
 
 architecture rtl of controller is
-    component top is
+    component top is 
         generic (SYSTEM_CLOCK_IN : integer := 27e6;
                 I2C_CLOCK_OUT : integer := 100e3);
         port(clk_in : in std_logic;
@@ -36,9 +36,9 @@ architecture rtl of controller is
 
     signal GO : std_logic := '0';
 
-    constant s_address : std_logic_vector(7 downto 0) := "01111000";
-    type t_sequence is array (integer range <>) of std_logic_vector(7 downto 0);
-    constant sequencia_teste : t_sequence (16 downto 0) := (x"40", x"FF", x"AA", x"AA", x"AA",x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"FF");
+    constant s_address : std_logic_vector(7 downto 0) := x"3C";
+    type t_sequence is array (integer <>) of std_logic_vector(7 downto 0);
+    constant sequencia_teste : t_sequence (2 downto 0) := (x"0", x"A4", x"AF");
 
     type t_state is (idle, start, addressing, dating, stop);
     signal estado : t_state := idle;
@@ -46,7 +46,7 @@ architecture rtl of controller is
 
 begin
     top0 : top
-    generic map (SYSTEM_CLOCK_IN => 27e6, I2C_CLOCK_OUT => 10000)
+    generic map (SYSTEM_CLOCK_IN => 10, I2C_CLOCK_OUT => 10)
     port map (
     clk_in => top_clk_in, 
     scl => o_scl, 
@@ -60,20 +60,18 @@ begin
     data_nack => top_data_nack
     );
 
-    saida_pulso_dados <= top_send_data;
-    saida_hab_transmissao <= top_start_transmission;
-
     top_clk_in <= clk;
+    top_start_transmission <= start;
     o_busy <= top_busy;
     o_address_nack <= top_address_nack;
     o_data_nack <= top_data_nack;
 
-    start_button : process (clk, reset, i_start)
+    start_button : process (clk, reset, start)
     begin
         if estado = stop then
             GO <= '0';
             lock <= true;
-        elsif rising_edge(i_start) then
+        elsif rising_edge(start) then
             if lock = false then
                 GO <= '1';
             end if;
@@ -82,18 +80,13 @@ begin
         end if;
     end process;
 
-    process (clk, reset, i_start, top_busy)
+    process (clk, reset, start, top_busy)
         variable conta : integer := sequencia_teste'length;
-        variable conta_lock : boolean := false;
     begin
         if rising_edge(clk) then
             case estado is
             when idle =>
-                if top_busy = '1' then
-                    top_start_transmission <= '1';
-                else
-                    top_start_transmission <= '0';
-                end if;
+                top_start_transmission <= '0';
                 top_send_data <= '0';
                 top_address <= s_address;
                 if GO = '1' then
@@ -121,7 +114,6 @@ begin
                 if top_busy = '1' then
                     estado <= dating;
                     top_send_data <= '0';
-                    conta_lock := false;
                 else 
                     if conta = 0 then
                         conta := sequencia_teste'length;
@@ -129,11 +121,7 @@ begin
                     else
                         top_i_data <= sequencia_teste(conta - 1);
                         top_send_data <= '1';
-                        if conta_lock = false then
-                            conta := conta - 1;
-                            conta_lock := true;
-                        end if;
-                        
+                        conta := conta - 1;
                         estado <= dating;
                     end if;
                 end if;

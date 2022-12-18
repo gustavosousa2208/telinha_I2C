@@ -4,17 +4,20 @@
 //GOWIN Version: 1.9.8.07
 //Part Number: GW1NR-LV9QN88PC6/I5
 //Device: GW1NR-9C
-//Created Time: Sat 12 17 01:19:58 2022
+//Created Time: Sat 12 17 22:03:08 2022
 
-IO_LOC "o_nack2" 11;
-IO_PORT "o_nack2" PULL_MODE=UP DRIVE=8;
-IO_LOC "o_nack1" 10;
-IO_PORT "o_nack1" PULL_MODE=UP DRIVE=8;
-IO_LOC "scl" 32;
-IO_PORT "scl" PULL_MODE=UP DRIVE=8;
-IO_LOC "sda" 31;
-IO_PORT "sda" PULL_MODE=UP DRIVE=8;
-IO_LOC "start_transmission" 3;
-IO_PORT "start_transmission" PULL_MODE=UP;
-IO_LOC "clk_in" 52;
-IO_PORT "clk_in" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "o_busy" PULL_MODE=UP DRIVE=8;
+IO_LOC "o_data_nack" 11;
+IO_PORT "o_data_nack" PULL_MODE=UP DRIVE=8;
+IO_LOC "o_address_nack" 10;
+IO_PORT "o_address_nack" PULL_MODE=UP DRIVE=8;
+IO_PORT "saida_hab_transmissao" PULL_MODE=UP DRIVE=8;
+IO_PORT "saida_pulso_dados" PULL_MODE=UP DRIVE=8;
+IO_LOC "o_scl" 32;
+IO_PORT "o_scl" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8;
+IO_LOC "o_sda" 31;
+IO_PORT "o_sda" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8;
+IO_LOC "i_start" 3;
+IO_PORT "i_start" PULL_MODE=UP;
+IO_LOC "clk" 52;
+IO_PORT "clk" IO_TYPE=LVCMOS33 PULL_MODE=UP;

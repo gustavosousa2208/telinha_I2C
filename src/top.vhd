@@ -1,11 +1,11 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- para evitar problemas, remova o 'Z' lÃ¡ na hora de selecionar o pre_data ou nao
+-- para evitar problemas, remova o 'Z' lÃƒÂ¡ na hora de selecionar o pre_data ou nao
 
 entity top is 
-    generic (SYSTEM_CLOCK_IN : 27e6;
-            I2C_CLOCK_OUT : 100e3);
+    generic (SYSTEM_CLOCK_IN : integer := 27e6;
+            I2C_CLOCK_OUT : integer := 100e3);
     port(clk_in : in std_logic;
          scl : out std_logic;
          sda : inout std_logic;
@@ -35,10 +35,9 @@ architecture rtl of top is
 	signal s_full : std_logic := '0';
 	signal s_transmission_started : std_logic := '0';
 	
-	signal s_data : std_logic_vector(7 downto 0) := "10110101";
+	signal s_data : std_logic_vector(7 downto 0) := "00000000";
 
 begin
-    o_i2c_clk <= clk_in;
     divisor : process(clk_in)
         variable conta : integer range 0 to (SYSTEM_CLOCK_IN / I2C_CLOCK_OUT) := 1;
     begin
@@ -187,7 +186,7 @@ begin
 --            s_sda when ((estado /= ack1) and (estado /= ack2)) else 
 			'Z' when ((estado = ack1) or (estado = ack2)) else s_sda;
 
-    busy <= '0' when (estado = idle or estado = pre_data) else '1';
+    busy <= '0' when (estado = idle or estado = pre_data or estado = terminado or estado = stop1) else '1';
 
 
 end architecture;

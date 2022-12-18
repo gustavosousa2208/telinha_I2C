@@ -12,7 +12,7 @@ Running routing......
 [60%] Routing Phase 0 completed
 [70%] Routing Phase 1 completed
 [80%] Routing Phase 2 completed
-WARN  (PR1014) : Generic routing resource will be used to clock signal 'start_transmission_d' by the specified constraint. And then it may lead to the excessive delay or skew
+WARN  (PR1014) : Generic routing resource will be used to clock signal 'i_start_d' by the specified constraint. And then it may lead to the excessive delay or skew
 [90%] Routing Phase 3 completed
 Running timing analysis......
 [95%] Timing analysis completed
@@ -29,5 +29,5 @@ Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\i
 Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.tr.html" completed
 Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.posp" completed
 Generate file "C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\telinha_I2C.ibs" completed
-Sat Dec 17 20:03:51 2022
+Sat Dec 17 22:53:11 2022
 

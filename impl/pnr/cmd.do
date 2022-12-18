@@ -3,7 +3,6 @@
 -pn GW1NR-LV9QN88PC6/I5
 -cst C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\telinha_I2C.cst
 -cfg C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\impl\pnr\device.cfg
--sdc C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\telinha_I2C.sdc
 -bit
 -tr
 -ph

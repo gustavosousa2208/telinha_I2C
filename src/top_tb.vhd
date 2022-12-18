@@ -5,93 +5,36 @@ use ieee.numeric_std.all;
 entity top_tb is end top_tb;
 
 architecture testbench of top_tb is
-    component top is 
-        port(clk_in : in std_logic;
-         scl : out std_logic;
-         sda : inout std_logic;
-         start_transmission, send_data : in std_logic;
-         busy : out std_logic;
-         address : in std_logic_vector(7 downto 0);
-         i_data : in std_logic_vector(7 downto 0);
-         o_nack1, o_nack2 : out std_logic);
-    end component;
-
-    signal clk_in : std_logic;    
-    signal sda : std_logic;
-	signal scl : std_logic;
-    signal busy : std_logic;
-    signal address : std_logic_vector(7 downto 0);
-	signal o_nack1, o_nack2 : std_logic;
-    signal i_data : std_logic_vector(7 downto 0);
-    signal start_transmission, send_data : std_logic := '0';
-
+    component controller is 
+		Port ( clk : in std_logic;
+		reset : in std_logic;
+		i_start : in std_logic;
+		o_scl, saida_pulso_dados, saida_hab_transmissao : out std_logic;
+		o_sda : inout std_logic;
+		o_address_nack, o_data_nack, o_busy : out std_logic);
+	end component;
 	
-begin
-    uut : top port map(clk_in => clk_in, 
-        scl => scl, 
-        sda => sda, 
-        start_transmission => start_transmission, 
-        send_data => send_data, 
-        busy => busy, 
-        address => address, 
-        i_data => i_data, 
-        o_nack1 => o_nack1, 
-        o_nack2 => o_nack2);
-		
-	address <= std_logic_vector(to_unsigned(16#69#, 8));
-	i_data <= std_logic_vector(to_unsigned(16#75#, 8));
+	signal clk, reset, i_start : std_logic;
+	signal o_sda, o_scl : std_logic;
+	signal o_address_nack, o_data_nack, o_busy : std_logic;
+	signal saida_pulso_dados, saida_hab_transmissao : std_logic;
 
-    process
-    begin
-        start_transmission <= '1';
-        for i in 0 to 12 loop
-            clk_in <= '0';
+begin
+
+	ctrl : controller port map (saida_hab_transmissao=>saida_hab_transmissao, saida_pulso_dados => saida_pulso_dados, clk => clk, reset => reset, i_start => i_start, o_scl => o_scl, o_sda => o_sda, o_address_nack => o_address_nack, o_data_nack => o_data_nack, o_busy => o_busy);
+
+	process
+	begin
+		i_start <= '0';
+		wait for 10 ps;
+		i_start <= '1';
+		for i in 1 to 178 loop
+			clk <= '0';
 			wait for 10 ps;
-            clk_in <= '1';
-            wait for 10 ps;
-        end loop;
-		if o_nack1 = '1' then
-			report "ADDRESS ERROR";
-		else
-			while busy = '1' loop
-				clk_in <= '0';
-				wait for 10 ps;
-				clk_in <= '1';
-				wait for 10 ps;
-			end loop;
-			
-			send_data <= '1';
-			wait for 20 ps;
-			send_data <= '0';
-			
-			while busy = '0' loop
-				clk_in <= '0';
-				wait for 10 ps;
-				clk_in <= '1';
-				wait for 10 ps;
-			end loop;
-			
-			while busy = '1' loop
-				clk_in <= '0';
-				wait for 10 ps;
-				clk_in <= '1';
-				wait for 10 ps;
-			end loop;
-		
+			clk <= '1';
 			wait for 10 ps;
-			start_transmission <= '0';
-			
-			clk_in <= '0';
-			wait for 10 ps;
-			clk_in <= '1';
-			wait for 10 ps;
-			
-			clk_in <= '0';
-			wait for 10 ps;
-			clk_in <= '1';
-			wait for 10 ps;
-			
-			wait;
-		end if;
-    end process;
+		end loop;
+		wait;
+	end process;
+    
 end architecture;
