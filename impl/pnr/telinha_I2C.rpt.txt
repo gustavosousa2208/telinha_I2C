@@ -11,26 +11,26 @@
   <PnR Version>: V1.9.8.09
   <Part Number>: GW1NR-LV9QN88PC6/I5
   <Device>: GW1NR-9C
-  <Created Time>:Thu Dec 22 12:05:31 2022
+  <Created Time>:Thu Dec 22 16:36:48 2022
 
 
 2. PnR Details
 
   Running placement:
-    Placement Phase 0: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.018s
-    Placement Phase 1: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.078s
-    Placement Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.008s
+    Placement Phase 0: CPU time = 0h 0m 0.007s, Elapsed time = 0h 0m 0.007s
+    Placement Phase 1: CPU time = 0h 0m 0.076s, Elapsed time = 0h 0m 0.076s
+    Placement Phase 2: CPU time = 0h 0m 0.004s, Elapsed time = 0h 0m 0.004s
     Placement Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
     Total Placement: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
  Running routing:
-    Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.001s
-    Routing Phase 1: CPU time = 0h 0m 0.109s, Elapsed time = 0h 0m 0.114s
-    Routing Phase 2: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.073s
-    Total Routing: CPU time = 0h 0m 0.187s, Elapsed time = 0h 0m 0.188s
+    Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
+    Routing Phase 1: CPU time = 0h 0m 0.152s, Elapsed time = 0h 0m 0.152s
+    Routing Phase 2: CPU time = 0h 0m 0.082s, Elapsed time = 0h 0m 0.082s
+    Total Routing: CPU time = 0h 0m 0.234s, Elapsed time = 0h 0m 0.234s
  Generate output files:
-    CPU time = 0h 0m 0.219s, Elapsed time = 0h 0m 0.224s
+    CPU time = 0h 0m 0.238s, Elapsed time = 0h 0m 0.237s
 
- Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 175MB
+ Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 199MB
 
 
 3. Resource Usage Summary
@@ -38,15 +38,15 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 98/8640  1%
-    --LUT,ALU,ROM16           | 98(83 LUT, 15 ALU, 0 ROM16)
+  Logic                       | 87/8640  1%
+    --LUT,ALU,ROM16           | 87(80 LUT, 7 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
-  Register                    | 62/6693  1%
+  Register                    | 51/6693  1%
     --Logic Register as Latch | 1/6480  1%
-    --Logic Register as FF    | 59/6480  1%
+    --Logic Register as FF    | 48/6480  1%
     --I/O Register as Latch   | 2/213  1%
     --I/O Register as FF      | 0/213  0%
-  CLS                         | 65/4320  1%
+  CLS                         | 62/4320  1%
   I/O Port                    | 10
   I/O Buf                     | 9
     --Input Buf               | 2
@@ -115,8 +115,8 @@ Port Name              | Diff Pair | Loc./Bank     | Constraint | Dir.  | Site  
 clk                    |           | 52/1          | Y          | in    | IOR17[A] | LVCMOS33   | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | OFF             | NA            | 1.2       
 i_start                |           | 3/3           | Y          | in    | IOT2[A]  | LVCMOS18   | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | OFF             | NA            | 1.8       
 o_scl                  |           | 32/2          | Y          | out   | IOB15[B] | LVCMOS33   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 3.3       
-saida_pulso_dados      |           | 86/3          | N          | out   | IOT8[A]  | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
-saida_hab_transmissao  |           | 84/3          | N          | out   | IOT10[A] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
+saida_pulso_dados      |           | 82/3          | N          | out   | IOT11[A] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
+saida_hab_transmissao  |           | 86/3          | N          | out   | IOT8[A]  | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
 o_address_nack         |           | 10/3          | Y          | out   | IOL15[A] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
 o_data_nack            |           | 11/3          | Y          | out   | IOL16[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
 o_busy                 |           | 13/3          | Y          | out   | IOL21[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
@@ -134,11 +134,11 @@ Loc./Bank| Signal                 | Dir.  | Site     | IO Type  | Drive | Pull M
 3/3      | i_start                | in    | IOT2[A]  | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | OFF             | NA            | 1.8  
 88/3     | -                      | in    | IOT5[A]  | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
 87/3     | -                      | in    | IOT6[B]  | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-86/3     | saida_pulso_dados      | out   | IOT8[A]  | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
+86/3     | saida_hab_transmissao  | out   | IOT8[A]  | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
 85/3     | -                      | in    | IOT8[B]  | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-84/3     | saida_hab_transmissao  | out   | IOT10[A] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
+84/3     | -                      | in    | IOT10[A] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
 83/3     | -                      | in    | IOT10[B] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-82/3     | -                      | in    | IOT11[A] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
+82/3     | saida_pulso_dados      | out   | IOT11[A] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
 81/3     | -                      | in    | IOT11[B] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
 80/3     | -                      | in    | IOT12[A] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
 79/3     | -                      | in    | IOT12[B] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  

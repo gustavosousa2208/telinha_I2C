@@ -38,9 +38,9 @@ architecture rtl of controller is
 
     constant s_address : std_logic_vector(7 downto 0) := "01111000";
     type t_sequence is array (integer range <>) of std_logic_vector(7 downto 0);
-    -- GOWIN IDE: nao sei o motivo, precisamos comeÃƒÂ§ar com 00h e terminar com 00h, assim da pra enviar tudo q tem entre
-    constant sequencia_teste : t_sequence (6 downto 0) := (x"00", x"00", x"A6", x"02", x"4A", x"AF", x"00");
---    constant sequencia_teste : t_sequence (10 downto 0) := (x"00", x"40", x"FF", x"FF", x"FF", x"FF", x"FF", x"FF", x"FF", x"FF",x"00");
+    -- GOWIN IDE: nao sei o motivo, precisamos comeÃƒÆ’Ã‚Â§ar com 00h e terminar com 00h, assim da pra enviar tudo q tem entre
+--    constant sequencia_teste : t_sequence (6 downto 0) := (x"00", x"00", x"A6", x"02", x"4A",ss x"AF", x"00");
+    constant sequencia_teste : t_sequence (10 downto 0) := (x"00", x"40", x"0F", x"0F", x"00", x"FF", x"00", x"FF", x"00", x"FF",x"00");
 
     type t_state is (idle, start, addressing, dating, stop);
     signal estado : t_state := idle;
@@ -48,7 +48,7 @@ architecture rtl of controller is
 
 begin
     top0 : top
-    generic map (SYSTEM_CLOCK_IN => 27e6, I2C_CLOCK_OUT => 1000)
+    generic map (SYSTEM_CLOCK_IN => 27e6, I2C_CLOCK_OUT => 400e3)
     port map (
     clk_in => top_clk_in, 
     scl => o_scl, 

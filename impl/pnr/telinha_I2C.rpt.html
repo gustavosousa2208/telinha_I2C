@@ -79,7 +79,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Thu Dec 22 12:05:31 2022
+<td>Thu Dec 22 16:36:48 2022
 </td>
 </tr>
 <tr>
@@ -93,23 +93,23 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td class="label">Place & Route Process</td>
 <td>Running placement:
-   Placement Phase 0: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.018s
-   Placement Phase 1: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.078s
-   Placement Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.008s
+   Placement Phase 0: CPU time = 0h 0m 0.007s, Elapsed time = 0h 0m 0.007s
+   Placement Phase 1: CPU time = 0h 0m 0.076s, Elapsed time = 0h 0m 0.076s
+   Placement Phase 2: CPU time = 0h 0m 0.004s, Elapsed time = 0h 0m 0.004s
    Placement Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
    Total Placement: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
 Running routing:
-   Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.001s
-   Routing Phase 1: CPU time = 0h 0m 0.109s, Elapsed time = 0h 0m 0.114s
-   Routing Phase 2: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.073s
-   Total Routing: CPU time = 0h 0m 0.187s, Elapsed time = 0h 0m 0.188s
+   Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
+   Routing Phase 1: CPU time = 0h 0m 0.152s, Elapsed time = 0h 0m 0.152s
+   Routing Phase 2: CPU time = 0h 0m 0.082s, Elapsed time = 0h 0m 0.082s
+   Total Routing: CPU time = 0h 0m 0.234s, Elapsed time = 0h 0m 0.234s
 Generate output files:
-   CPU time = 0h 0m 0.219s, Elapsed time = 0h 0m 0.224s
+   CPU time = 0h 0m 0.238s, Elapsed time = 0h 0m 0.237s
 </td>
 </tr>
 <tr>
 <td class="label">Total Time and Memory Usage</td>
-<td>CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 175MB</td>
+<td>CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 199MB</td>
 </tr>
 </table>
 <br/>
@@ -124,12 +124,12 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">Logic</td>
-<td>98/8640</td>
+<td>87/8640</td>
 <td>1%</td>
 </tr>
 <tr>
 <td class="label">&nbsp &nbsp --LUT,ALU,ROM16</td>
-<td>98(83 LUT, 15 ALU, 0 ROM16)</td>
+<td>87(80 LUT, 7 ALU, 0 ROM16)</td>
 <td>-</td>
 </tr>
 <tr>
@@ -139,7 +139,7 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">Register</td>
-<td>62/6693</td>
+<td>51/6693</td>
 <td>1%</td>
 </tr>
 <tr>
@@ -149,7 +149,7 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">&nbsp &nbsp --Logic Register as FF</td>
-<td>59/6480</td>
+<td>48/6480</td>
 <td>1%</td>
 </tr>
 <tr>
@@ -164,7 +164,7 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">CLS</td>
-<td>65/4320</td>
+<td>62/4320</td>
 <td>1%</td>
 </tr>
 <tr>
@@ -424,10 +424,10 @@ Generate output files:
 <tr>
 <td class="label">saida_pulso_dados</td>
 <td></td>
-<td>86/3</td>
+<td>82/3</td>
 <td>N</td>
 <td>out</td>
-<td>IOT8[A]</td>
+<td>IOT11[A]</td>
 <td>LVCMOS18</td>
 <td>8</td>
 <td>UP</td>
@@ -443,10 +443,10 @@ Generate output files:
 <tr>
 <td class="label">saida_hab_transmissao</td>
 <td></td>
-<td>84/3</td>
+<td>86/3</td>
 <td>N</td>
 <td>out</td>
-<td>IOT10[A]</td>
+<td>IOT8[A]</td>
 <td>LVCMOS18</td>
 <td>8</td>
 <td>UP</td>
@@ -609,7 +609,7 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">86/3</td>
-<td>saida_pulso_dados</td>
+<td>saida_hab_transmissao</td>
 <td>out</td>
 <td>IOT8[A]</td>
 <td>LVCMOS18</td>
@@ -643,18 +643,18 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">84/3</td>
-<td>saida_hab_transmissao</td>
-<td>out</td>
+<td>-</td>
+<td>in</td>
 <td>IOT10[A]</td>
 <td>LVCMOS18</td>
-<td>8</td>
+<td>NA</td>
 <td>UP</td>
+<td>ON</td>
+<td>NONE</td>
 <td>NA</td>
 <td>NA</td>
-<td>OFF</td>
-<td>FAST</td>
 <td>NA</td>
-<td>OFF</td>
+<td>NA</td>
 <td>NA</td>
 <td>1.8</td>
 </tr>
@@ -677,18 +677,18 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">82/3</td>
-<td>-</td>
-<td>in</td>
+<td>saida_pulso_dados</td>
+<td>out</td>
 <td>IOT11[A]</td>
 <td>LVCMOS18</td>
-<td>NA</td>
+<td>8</td>
 <td>UP</td>
-<td>ON</td>
-<td>NONE</td>
 <td>NA</td>
 <td>NA</td>
+<td>OFF</td>
+<td>FAST</td>
 <td>NA</td>
-<td>NA</td>
+<td>OFF</td>
 <td>NA</td>
 <td>1.8</td>
 </tr>
