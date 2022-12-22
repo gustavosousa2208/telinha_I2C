@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/controller.vhd",
-    "InstLine" : 48,
+    "InstLine" : 50,
     "InstName" : "top0",
     "ModuleFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/top.vhd",
     "ModuleLine" : 6,

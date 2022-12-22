@@ -72,6 +72,7 @@ begin
         variable conta : integer range 8 downto 0 := 8;
         variable conta_dado : integer range 8 downto 0 := 8;
     begin
+		-- padrao: falling_edge
         if falling_edge(o_i2c_clk) then
             case estado is 
             when idle =>
@@ -104,7 +105,7 @@ begin
 			
 				if s_nack1 = '1' then
                     estado <= stop1;
-                elsif s_nack1 = 'Z' or s_nack1 = '0' then
+                elsif s_nack1 = '0' or s_nack1 = 'Z' then
 					if start_transmission = '1' then
 						if s_full = '1' then
 							estado <= data;

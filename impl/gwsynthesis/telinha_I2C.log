@@ -1,22 +1,18 @@
 GowinSynthesis start
 Running parser ...
-Analyzing VHDL file 'C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd'
-Analyzing entity 'top'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":6)
-Analyzing architecture 'rtl'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":19)
 Analyzing VHDL file 'C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd'
 Analyzing entity 'controller'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":5)
 Analyzing architecture 'rtl'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":14)
+Analyzing VHDL file 'C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd'
+Analyzing entity 'top'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":6)
+Analyzing architecture 'rtl'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":19)
 Processing 'controller(rtl)'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":5)
-Processing 'top(i2c_clock_out=10000)(rtl)'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":6)
-WARN  (EX4220) : Equality comparison of a non-constant with a static metalogical value always evaluates to 'false', synthesis - simulation differences may occur("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":107)
-WARN  (EX4160) : Latch inferred for net 's_nack1'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":167)
-WARN  (EX4160) : Latch inferred for net 's_nack2'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":176)
-WARN  (EX4160) : Latch inferred for net 'scl'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":181)
-WARN  (EX4749) : 'estado' should be on the sensitivity list of the process("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":73)
-WARN  (EX4749) : 'go' should be on the sensitivity list of the process("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":81)
-WARN  (EX4387) : Incomplete sensitivity list specified, assuming completeness("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":83)
-WARN  (EX4160) : Latch inferred for net 'lock'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":83)
-'others' clause is never selected("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":143)
+Processing 'top(i2c_clock_out=1000)(rtl)'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":6)
+WARN  (EX4220) : Equality comparison of a non-constant with a static metalogical value always evaluates to 'false', synthesis - simulation differences may occur("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":108)
+WARN  (EX4160) : Latch inferred for net 's_nack1'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":168)
+WARN  (EX4160) : Latch inferred for net 's_nack2'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":177)
+WARN  (EX4160) : Latch inferred for net 'scl'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":182)
+'others' clause is never selected("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":144)
 NOTE  (EX0101) : Current top module is "controller"
 [5%] Running netlist conversion ...
 WARN  (CV0016) : Input reset is unused("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":7)

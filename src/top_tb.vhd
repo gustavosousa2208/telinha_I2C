@@ -28,11 +28,11 @@ begin
 		i_start <= '0';
 		wait for 10 ps;
 		i_start <= '1';
-		for i in 1 to 178 loop
+		for i in 1 to 300 loop
 			clk <= '0';
-			wait for 10 ps;
+			wait for 1 ps;
 			clk <= '1';
-			wait for 10 ps;
+			wait for 1 ps;
 		end loop;
 		wait;
 	end process;

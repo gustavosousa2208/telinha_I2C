@@ -12,4 +12,5 @@
 -warning_all
 -timing
 -cst_error
+-place_option 1
 -route_maxfan 23

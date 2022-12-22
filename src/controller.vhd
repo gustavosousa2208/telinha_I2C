@@ -38,7 +38,9 @@ architecture rtl of controller is
 
     constant s_address : std_logic_vector(7 downto 0) := "01111000";
     type t_sequence is array (integer range <>) of std_logic_vector(7 downto 0);
-    constant sequencia_teste : t_sequence (16 downto 0) := (x"40", x"FF", x"AA", x"AA", x"AA",x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"AA", x"FF");
+    -- GOWIN IDE: nao sei o motivo, precisamos comeÃƒÂ§ar com 00h e terminar com 00h, assim da pra enviar tudo q tem entre
+    constant sequencia_teste : t_sequence (6 downto 0) := (x"00", x"00", x"A6", x"02", x"4A", x"AF", x"00");
+--    constant sequencia_teste : t_sequence (10 downto 0) := (x"00", x"40", x"FF", x"FF", x"FF", x"FF", x"FF", x"FF", x"FF", x"FF",x"00");
 
     type t_state is (idle, start, addressing, dating, stop);
     signal estado : t_state := idle;
@@ -46,7 +48,7 @@ architecture rtl of controller is
 
 begin
     top0 : top
-    generic map (SYSTEM_CLOCK_IN => 27e6, I2C_CLOCK_OUT => 10000)
+    generic map (SYSTEM_CLOCK_IN => 27e6, I2C_CLOCK_OUT => 1000)
     port map (
     clk_in => top_clk_in, 
     scl => o_scl, 
@@ -68,22 +70,19 @@ begin
     o_address_nack <= top_address_nack;
     o_data_nack <= top_data_nack;
 
-    start_button : process (clk, reset, i_start)
+    start_button : process (GO, clk, reset, i_start,estado)
     begin
         if estado = stop then
             GO <= '0';
-            lock <= true;
         elsif rising_edge(i_start) then
-            if lock = false then
-                GO <= '1';
-            end if;
+            GO <= '1';
         else 
             GO <= GO;
         end if;
     end process;
 
-    process (clk, reset, i_start, top_busy)
-        variable conta : integer := sequencia_teste'length;
+    process (clk, reset, i_start, top_busy, GO,estado)
+        variable conta : integer range sequencia_teste'length downto 0:= sequencia_teste'length;
         variable conta_lock : boolean := false;
     begin
         if rising_edge(clk) then
@@ -94,10 +93,11 @@ begin
                 else
                     top_start_transmission <= '0';
                 end if;
+
                 top_send_data <= '0';
                 top_address <= s_address;
+
                 if GO = '1' then
-                    
                     estado <= start;
                 else
                     estado <= idle;
@@ -107,6 +107,7 @@ begin
                 top_send_data <= '0';
                 estado <= addressing;
             when addressing =>
+				top_start_transmission <= '1';
                 top_send_data <= '0';
                 if top_busy = '1' then
                     estado <= addressing;
@@ -144,7 +145,4 @@ begin
             end case;
         end if;
     end process;
-                
-
-
 end architecture;
