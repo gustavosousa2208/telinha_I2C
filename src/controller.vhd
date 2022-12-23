@@ -39,8 +39,7 @@ architecture rtl of controller is
     constant s_address : std_logic_vector(7 downto 0) := "01111000";
     type t_sequence is array (integer range <>) of std_logic_vector(7 downto 0);
     -- GOWIN IDE: nao sei o motivo, precisamos comeÃƒÆ’Ã‚Â§ar com 00h e terminar com 00h, assim da pra enviar tudo q tem entre
---    constant sequencia_teste : t_sequence (6 downto 0) := (x"00", x"00", x"A6", x"02", x"4A",ss x"AF", x"00");
-    constant sequencia_teste : t_sequence (10 downto 0) := (x"00", x"40", x"0F", x"0F", x"00", x"FF", x"00", x"FF", x"00", x"FF",x"00");
+    constant sequencia_teste : t_sequence (9 downto 0) := (x"00", x"00", x"81", x"FF", x"A6", x"C8", x"A1", x"4A", x"AF", x"00");
 
     type t_state is (idle, start, addressing, dating, stop);
     signal estado : t_state := idle;
@@ -66,7 +65,7 @@ begin
     saida_hab_transmissao <= top_start_transmission;
 
     top_clk_in <= clk;
-    o_busy <= top_busy;
+    o_busy <= '0' when lock = true else '1';
     o_address_nack <= top_address_nack;
     o_data_nack <= top_data_nack;
 
@@ -75,7 +74,10 @@ begin
         if estado = stop then
             GO <= '0';
         elsif rising_edge(i_start) then
-            GO <= '1';
+            if lock = false then
+                GO <= '1';
+                lock <= true;
+            end if;
         else 
             GO <= GO;
         end if;

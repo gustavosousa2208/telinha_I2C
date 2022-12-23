@@ -12,7 +12,7 @@ WARN  (EX4220) : Equality comparison of a non-constant with a static metalogical
 WARN  (EX4160) : Latch inferred for net 's_nack1'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":168)
 WARN  (EX4160) : Latch inferred for net 's_nack2'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":177)
 WARN  (EX4160) : Latch inferred for net 'scl'("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\top.vhd":184)
-'others' clause is never selected("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":144)
+'others' clause is never selected("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":146)
 NOTE  (EX0101) : Current top module is "controller"
 [5%] Running netlist conversion ...
 WARN  (CV0016) : Input reset is unused("C:\Users\gusta\OneDrive\Documentos\Projetos_Quartus\telinha_I2C\src\controller.vhd":7)
