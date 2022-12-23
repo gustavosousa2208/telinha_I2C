@@ -4,11 +4,11 @@
 //GOWIN Version: V1.9.8.09
 //Part Number: GW1NR-LV9QN88PC6/I5
 //Device: GW1NR-9C
-//Created Time: Thu Dec 22 21:48:24 2022
+//Created Time: Thu Dec 22 21:52:36 2022
 
 (DELAYFILE 
   (SDFVERSION "3.0")
-  (DESIGN "controller")
+  (DESIGN "iniciar_display")
   (VENDOR "Gowin")
   (PROGRAM "Gowin SDF Writer")
   (VERSION "1.0")
@@ -2205,7 +2205,7 @@
   )
   (CELL
    (CELLTYPE "OBUF")
-   (INSTANCE o_busy_obuf)
+   (INSTANCE trava_ativada_obuf)
     (DELAY
      (ABSOLUTE
       (IOPATH I O (2.669:2.725:2.781))
@@ -2213,7 +2213,7 @@
     )
   )
   (CELL
-   (CELLTYPE "controller")
+   (CELLTYPE "iniciar_display")
    (INSTANCE )
     (DELAY
      (ABSOLUTE
@@ -2340,7 +2340,7 @@
        (INTERCONNECT top_send_data_s1/Q top0\/s_data_1_s0/CLK (1.258:1.702:2.147))
        (INTERCONNECT top_send_data_s1/Q top0\/s_data_0_s0/CLK (1.258:1.702:2.147))
        (INTERCONNECT n129_s5/O estado_2_s0/RESET (0.508:0.678:0.848))
-       (INTERCONNECT GO_s3/F o_busy_obuf/I (1.986:3.021:4.055))
+       (INTERCONNECT GO_s3/F trava_ativada_obuf/I (1.986:3.021:4.055))
        (INTERCONNECT GO_s3/F GO_s0/CE (0.502:0.664:0.826))
        (INTERCONNECT n62_s5/F conta_0_s0/D (0.000:0.000:0.000))
        (INTERCONNECT top0\/s_nack1_s0/Q o_address_nack_obuf/I (0.835:1.319:1.803))

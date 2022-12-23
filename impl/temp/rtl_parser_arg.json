@@ -2,12 +2,12 @@
  "Files" : [
   {
    "Library" : "work",
-   "Path" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/controller.vhd",
+   "Path" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/top.vhd",
    "Type" : "vhdl"
   },
   {
    "Library" : "work",
-   "Path" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/top.vhd",
+   "Path" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/iniciar_display.vhd",
    "Type" : "vhdl"
   }
  ],

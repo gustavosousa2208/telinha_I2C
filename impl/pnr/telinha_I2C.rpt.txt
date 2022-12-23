@@ -11,26 +11,26 @@
   <PnR Version>: V1.9.8.09
   <Part Number>: GW1NR-LV9QN88PC6/I5
   <Device>: GW1NR-9C
-  <Created Time>:Thu Dec 22 21:48:24 2022
+  <Created Time>:Thu Dec 22 21:52:36 2022
 
 
 2. PnR Details
 
   Running placement:
     Placement Phase 0: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.007s
-    Placement Phase 1: CPU time = 0h 0m 0.079s, Elapsed time = 0h 0m 0.09s
-    Placement Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.006s
-    Placement Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
+    Placement Phase 1: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.074s
+    Placement Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.005s
+    Placement Phase 3: CPU time = 0h 0m 0.956s, Elapsed time = 0h 0m 0.949s
     Total Placement: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
  Running routing:
     Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Routing Phase 1: CPU time = 0h 0m 0.14s, Elapsed time = 0h 0m 0.143s
-    Routing Phase 2: CPU time = 0h 0m 0.079s, Elapsed time = 0h 0m 0.08s
-    Total Routing: CPU time = 0h 0m 0.219s, Elapsed time = 0h 0m 0.223s
+    Routing Phase 1: CPU time = 0h 0m 0.172s, Elapsed time = 0h 0m 0.161s
+    Routing Phase 2: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.086s
+    Total Routing: CPU time = 0h 0m 0.25s, Elapsed time = 0h 0m 0.247s
  Generate output files:
-    CPU time = 0h 0m 0.219s, Elapsed time = 0h 0m 0.229s
+    CPU time = 0h 0m 0.398s, Elapsed time = 0h 0m 0.385s
 
- Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 191MB
+ Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 216MB
 
 
 3. Resource Usage Summary
@@ -119,7 +119,7 @@ saida_pulso_dados      |           | 84/3          | N          | out   | IOT10[
 saida_hab_transmissao  |           | 16/3          | N          | out   | IOL26[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
 o_address_nack         |           | 10/3          | Y          | out   | IOL15[A] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
 o_data_nack            |           | 11/3          | Y          | out   | IOL16[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
-o_busy                 |           | 13/3          | Y          | out   | IOL21[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
+trava_ativada          |           | 13/3          | Y          | out   | IOL21[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8       
 o_sda                  |           | 31/2          | Y          | io    | IOB15[A] | LVCMOS33   | 8     | UP        | NA        | NONE       | OFF        | FAST      | NA         | NA              | NA            | 3.3       
 ==============================================================================================================================================================================================================================
 
@@ -185,7 +185,7 @@ Loc./Bank| Signal                 | Dir.  | Site     | IO Type  | Drive | Pull M
 9/3      | -                      | in    | IOL13[B] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
 10/3     | o_address_nack         | out   | IOL15[A] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
 11/3     | o_data_nack            | out   | IOL16[B] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
-13/3     | o_busy                 | out   | IOL21[B] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
+13/3     | trava_ativada          | out   | IOL21[B] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  
 14/3     | -                      | in    | IOL22[B] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
 15/3     | -                      | in    | IOL25[B] | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
 16/3     | saida_hab_transmissao  | out   | IOL26[B] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 1.8  

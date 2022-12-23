@@ -6,8 +6,8 @@
 //Device: GW1NR-9C
 //Created Time: Wed 12 21 23:31:09 2022
 
-IO_LOC "o_busy" 13;
-IO_PORT "o_busy" PULL_MODE=UP DRIVE=8;
+IO_LOC "trava_ativada" 13;
+IO_PORT "trava_ativada" PULL_MODE=UP DRIVE=8;
 IO_LOC "o_data_nack" 11;
 IO_PORT "o_data_nack" PULL_MODE=UP DRIVE=8;
 IO_LOC "o_address_nack" 10;

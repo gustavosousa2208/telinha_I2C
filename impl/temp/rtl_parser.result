@@ -1,15 +1,15 @@
 [
  {
-  "InstFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/controller.vhd",
+  "InstFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/iniciar_display.vhd",
   "InstLine" : 5,
-  "InstName" : "controller",
-  "ModuleFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/controller.vhd",
+  "InstName" : "iniciar_display",
+  "ModuleFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/iniciar_display.vhd",
   "ModuleLine" : 5,
-  "ModuleName" : "controller",
+  "ModuleName" : "iniciar_display",
   "SubInsts" : [
    {
-    "InstFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/controller.vhd",
-    "InstLine" : 50,
+    "InstFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/iniciar_display.vhd",
+    "InstLine" : 49,
     "InstName" : "top0",
     "ModuleFile" : "C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/top.vhd",
     "ModuleLine" : 6,

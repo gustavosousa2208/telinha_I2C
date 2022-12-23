@@ -2,16 +2,16 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity controller is 
+entity iniciar_display is 
     Port ( clk : in std_logic;
            reset : in std_logic;
            i_start : in std_logic;
            o_scl, saida_pulso_dados, saida_hab_transmissao : out std_logic;
            o_sda : inout std_logic;
-           o_address_nack, o_data_nack, o_busy : out std_logic);
-end controller;
+           o_address_nack, o_data_nack, trava_ativada : out std_logic);
+end iniciar_display;
 
-architecture rtl of controller is
+architecture rtl of iniciar_display is
     component top is
         generic (SYSTEM_CLOCK_IN : integer := 27e6;
                 I2C_CLOCK_OUT : integer := 100e3);
@@ -65,7 +65,7 @@ begin
     saida_hab_transmissao <= top_start_transmission;
 
     top_clk_in <= clk;
-    o_busy <= '0' when lock = true else '1';
+    trava_ativada <= '0' when lock = true else '1';
     o_address_nack <= top_address_nack;
     o_data_nack <= top_data_nack;
 

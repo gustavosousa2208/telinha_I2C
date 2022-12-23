@@ -1,11 +1,11 @@
 //
 //Written by GowinSynthesis
 //Product Version "GowinSynthesis V1.9.8.09"
-//Thu Dec 22 21:48:22 2022
+//Thu Dec 22 21:52:34 2022
 
 //Source file index table:
-//file0 "\C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/controller.vhd"
-//file1 "\C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/top.vhd"
+//file0 "\C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/top.vhd"
+//file1 "\C:/Users/gusta/OneDrive/Documentos/Projetos_Quartus/telinha_I2C/src/iniciar_display.vhd"
 `timescale 100 ps/100 ps
 module top (
   clk_d,
@@ -890,7 +890,7 @@ defparam n13_s.ALU_MODE=0;
     .G(GND)
 );
 endmodule /* top */
-module controller (
+module iniciar_display (
   clk,
   reset,
   i_start,
@@ -900,7 +900,7 @@ module controller (
   o_sda,
   o_address_nack,
   o_data_nack,
-  o_busy
+  trava_ativada
 )
 ;
 input clk;
@@ -912,7 +912,7 @@ output saida_hab_transmissao;
 inout o_sda;
 output o_address_nack;
 output o_data_nack;
-output o_busy;
+output trava_ativada;
 wire clk_d;
 wire i_start_d;
 wire o_sda_in;
@@ -1003,8 +1003,8 @@ wire GND;
     .O(o_data_nack),
     .I(o_data_nack_d) 
 );
-  OBUF o_busy_obuf (
-    .O(o_busy),
+  OBUF trava_ativada_obuf (
+    .O(trava_ativada),
     .I(GO_7) 
 );
   LUT3 n35_s0 (
@@ -1437,4 +1437,4 @@ defparam top_address_6_s4.INIT=1'b0;
   GSR GSR (
     .GSRI(VCC) 
 );
-endmodule /* controller */
+endmodule /* iniciar_display */
